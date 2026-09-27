@@ -105,7 +105,8 @@
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td cospan="2">Кузнецов Кузьма Кузьмич (переведён)</td>
+                        <td cospan="2">Кузнецов Кузьма Кузьмич</td>
+                        <td>переведён</td>
                         <td>3.7</td>
                     </tr>
                     <tr>
@@ -125,11 +126,17 @@
             <form action="#" method="post">
                 <p>
                     <lable for="fio">ФИО:</lable>
-                    <input type="text" id="fio" name="fio"><br>
+                    <input type="text" id="fio" name="fio"
+                    pattern="[A-Za-zА-Яа-яЁё\s\-]+"
+                    title="Введите корректное ФИО (только буквы, пробелы и дефисы)"
+                    required><br>
                 </p>
                 <p>
                     <lable for="phone">Телефон:</lable>
-                    <input type="tel" id="phone" name="phone"><br>
+                    <input type="tel" id="phone" name="phone"
+                    pattern="[0-9+\-\(\)\s]+"
+                    title="Введите корректный номер телефона (тольцо цифры, +, -, (, ), пробелы)"
+                    required><br>
                 </p>
                 <p>
                     <lable for="email">E-mail:</lable>
@@ -137,7 +144,7 @@
                 </p>
                 <p>
                     <lable for="birthdate">Дата рождения:</lable>
-                    <input type="birthdate" id="birthdate" name="birthdate"><br>
+                    <input type="date" id="birthdate" name="birthdate" required><br>
                 </p>
                 <fieldset>
                     <legend>Пол:</legend>
@@ -178,6 +185,10 @@
             <p>(с) Сергей Синица</p>
         </div>
     </footer>
+    <script>
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('birthdate').setAttribute('max', today);
+    </script>
 </body>
 
 </html>
